@@ -2,6 +2,11 @@ package chooseSort;
 
 public class ChooseSort {
 
+    /**
+     * 选择未排序数组中最小/最大元素依次往后排
+     * @param source
+     * @return
+     */
     public static int[] chooseSort(int[] source){
         for (int i = 0; i < source.length - 1; i++) {
             int min = source[i];
