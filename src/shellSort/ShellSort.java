@@ -52,15 +52,20 @@ public class ShellSort {
     }
 
     public static void sortV3(int array[]){
-        int h = 1;
+        int h = 3;
         while(h < array.length / 3){
             h = h * 3 + 1;
         }
 
         while(h > 0){
-
             for(int i = h;i < array.length;i++){
-
+                int j = i;
+                int temp = array[j];
+                while(j > h - 1 && array[j - h] > temp){
+                    array[j] = array[j - h];
+                    j = j - h;
+                }
+                array[j] = temp;
             }
 
             h = (h - 1) / 3;
@@ -75,8 +80,9 @@ public class ShellSort {
 
 
     public static void main(String[] args) {
-        int[] source = new int[]{3,6,0,5,4,1};
-        sortV2(source);
+//        int[] source = new int[]{3,6,0,5,4,1};
+        int[] source = new int[]{10,4,3,8,1,7,6};
+        sortV3(source);
         for (int a:source) {
             System.out.println(a);
         }

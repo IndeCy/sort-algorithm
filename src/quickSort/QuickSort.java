@@ -42,9 +42,41 @@ public class QuickSort {
         quickSort(nums,i+1,r);
     }
 
+
+    //将数组按照给定的比较值进行分区
+    public static int partition(int[] source,int left,int right,int point){
+        int leftIdx = left - 1;
+        //因为选择最右边的数为point所以从倒数第二个开始比较
+        int rightIdx = right;
+        while (true){
+            while(leftIdx < rightIdx && source[++leftIdx] < point);
+            while(leftIdx < rightIdx && source[--rightIdx] > point);
+            if(leftIdx < rightIdx){
+                int temp = source[leftIdx];
+                source[leftIdx] = source[rightIdx];
+                source[rightIdx] = temp;
+            }else{
+                break;
+            }
+        }
+        int temp = source[leftIdx];
+        source[leftIdx] = point;
+        source[right] = temp;
+        return leftIdx;
+    }
+
+    public static void quickSortV2(int[] source,int left,int right){
+        if(left >= right){
+            return;
+        }
+        int mid = partition(source,left,right,source[right]);
+        quickSortV2(source,left,mid - 1);
+        quickSortV2(source,mid + 1,right);
+    }
+
     public static void main(String[] args) {
         int[] source = new int[]{3,6,0,5,4,1};
-        quickSort(source);
+        quickSortV2(source,0,source.length-1);
         for (int a:source) {
             System.out.println(a);
         }
