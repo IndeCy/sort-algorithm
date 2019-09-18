@@ -31,7 +31,7 @@ public class ShellSort {
     int temp = 0;
     int incre = array.length;
     while (true) {
-         incre = incre / 2;
+        incre = incre / 2;
          for (int k = 0; k < incre; k++) { //根据增量分为若干子序列
             for (int i = k + incre; i < array.length; i += incre) {
                 for (int j = i; j > k; j -= incre) {
@@ -48,8 +48,28 @@ public class ShellSort {
          if (incre == 1) {
              break;
          }
-     }
-  }
+      }
+    }
+
+    public static void sortV3(int array[]){
+        int h = 1;
+        while(h < array.length / 3){
+            h = h * 3 + 1;
+        }
+
+        while(h > 0){
+
+            for(int i = h;i < array.length;i++){
+
+            }
+
+            h = (h - 1) / 3;
+        }
+
+
+
+
+    }
 
 
 
